@@ -1,0 +1,83 @@
+<%- include('../partials/head') %>
+<div class="app-shell">
+  <%- include('../partials/aside') %>
+
+  <main class="main">
+    <%- include('../partials/header') %>
+
+    <section class="page active" id="settings">
+      <a class="back-button" href="/auth/dashboard">← Voltar ao painel</a>
+      <div class="page-title">
+        <div>
+          <p class="eyebrow">ADMINISTRAÇÃO</p>
+          <h1>Configurações</h1>
+          <p class="muted">Personalize seu espaço e organize suas fontes.</p>
+        </div>
+      </div>
+      <div class="settings-grid">
+        <!-- Formulário de criar biblioteca -->
+        <form action="/auth/create-library" method="post" class="settings-card">
+          <h2>Adicionar biblioteca</h2>
+          <p>Importe uma coleção a partir de uma URL JSON pública.</p>
+          <label>URL do arquivo JSON
+            <input name="url" placeholder="https://exemplo.com/colecao.json"></label>
+          <label>Tipo da biblioteca
+            <select name="categoryId">
+              <option>Selecione um tipo</option>
+              <% categories.forEach(category => { %>
+              <option value="<%= category.id %>"><%= category.name %></option>
+              <% }) %>
+            </select>
+          </label>
+          <label>Nome da coleção
+            <small>Opcional</small>
+            <input name="name" placeholder="Ex: Meus jogos favoritos"></label>
+          <button class="primary full">Importar biblioteca</button>
+        </form>
+
+        <article class="settings-card">
+          <div class="card-title">
+            <div>
+              <h2>Categorias</h2>
+              <p>Gerencie os tipos disponíveis.</p>
+            </div><button class="text-button" data-modal="add-category">+ Adicionar</button>
+          </div>
+          <ul class="category-list">
+            <% categories.forEach(category => { %>
+            <li><span class="category-name category-badge <%= category.name.toLowerCase() %>"><%= category.name %></span><a class="category-remove" href="/auth/delete-category/<%= category.id %>" aria-label="Remover categoria">×</a></li>
+            <% }) %>
+          </ul>
+        </article>
+        <article class="settings-card danger-card">
+          <form action="/auth/user-delete/<%= userId %>" method="get">
+            <h2>Encerrar conta</h2>
+            <p>Exclua permanentemente sua conta, bibliotecas e todos os dados associados.</p>
+            <button type="submit" class="danger-outline">Encerrar minha conta</button>
+          </form>
+        </article>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- Modal de criação de categorias -->
+<div class="mobile-overlay" id="overlay"></div>
+<div class="modal-layer" id="modalLayer" aria-hidden="true" hidden>
+  <section class="modal" hidden data-modal-id="add-category" role="dialog" aria-modal="true" aria-labelledby="addCategoryTitle">
+    <button class="modal-icon-close modal-close" aria-label="Fechar modal">
+      <svg viewBox="0 0 24 24">
+        <path d="M6 6l12 12M18 6 6 18" />
+      </svg>
+    </button>
+    <form action="/auth/create-category" method="post" class="modal-form">
+      <p class="eyebrow">NOVA CATEGORIA</p>
+      <h2 id="addCategoryTitle">Adicionar categoria</h2>
+      <p class="modal-sub">Crie uma categoria para organizar suas bibliotecas.</p>
+      <label>Nome da categoria
+        <input name="categoryName" placeholder="Ex: Podcasts">
+      </label>
+      <button class="primary full" type="submit">Adicionar categoria</button>
+    </form>
+  </section>
+</div>
+<%- include('../partials/footer') %>

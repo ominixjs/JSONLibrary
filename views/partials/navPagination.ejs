@@ -1,0 +1,31 @@
+<div class="pagination-slot">
+
+  <nav class="catalog-pagination" aria-label="Paginação de bibliotecas">
+    <!-- Valida uma condição para retornar -->
+
+    <a href="/auth/<%= pageName %>/<%= page <= 1 ? 1 : page - 1 %>" class="pagination-nav <%= !hasPreviousPage ? "disabled" : "" %>" aria-label="Página anterior" aria-disabled="<%= !hasPreviousPage %>"> ← Anterior</a>
+    <!-- Cria botões de 4 em 4 relativo a página atual e ativa o botão da página. -->
+    <% for (let i = 1;i <= pageTotal; i++) { %>
+
+    <!-- Confere e cria o botão -->
+    <% if (i >= page && i <= page + 3 ) { %>
+
+    <!-- Adiciona o active no botão da página atual -->
+    <a href="/auth/<%= pageName %>/<%= i %>" class="pagination-button <%= page === i ? "active" : "" %>" aria-current="page">
+      <%= i %>
+    </a>
+    <% } %>
+    <% } %>
+
+    <!-- Apenas disponivel com um nùmero de paginas, com isso avança para o final -->
+    <% if (pageTotal >= 4 && page < pageTotal) { %>
+    <span class="page-ellipsis">…</span>
+    <a href="/auth/<%= pageName %>/<%= pageTotal %>" class="pagination-button"><%= pageTotal %></a>
+    <% } %>
+
+    <!-- Valida uma condição para avançar -->
+    <a href="/auth/<%= pageName %>/<%= page >= pageTotal ? pageTotal : page + 1 %>" class="pagination-nav <%= !hasNextPage ? "disabled" : "" %>" aria-label="Próxima página" aria-disabled="<%= !hasNextPage %>">Próxima →</a>
+
+  </nav>
+</div>
+<p class="empty-state" id="libraryEmpty" hidden>Nenhuma biblioteca corresponde aos filtros selecionados.</p>

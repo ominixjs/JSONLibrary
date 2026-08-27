@@ -1,0 +1,28 @@
+<%- include('../partials/head') %>
+<main class="auth-page">
+  <section class="auth-card verification-card">
+    <button class="auth-theme" id="themeToggle" type="button" aria-label="Alternar tema">◐</button>
+    <a class="auth-brand" href="landing.html"><img src="/assets/images/logo.svg" alt="JSONLibrary"></a>
+    <div class="verification-icon" aria-hidden="true"><svg viewBox="0 0 24 24">
+        <rect x="3" y="5" width="18" height="14" rx="2" />
+        <path d="m4 7 8 6 8-6" />
+        <path d="m9 16 2 2 4-4" />
+      </svg></div>
+    <h1>Valide seu e-mail</h1>
+    <p class="auth-intro">Enviamos um código de seis dígitos para <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0c7a636f694c697469617c6063226f6361">[email&#160;protected]</a></strong>.</p>
+    <form class="auth-form verification-form" action="/authenticate2FA" method="post">
+      <fieldset class="verification-code" aria-label="Código de validação">
+        <input inputmode="numeric" maxlength="1" pattern="[0-9]" autocomplete="one-time-code" name="code[0]" aria-label="Dígito 1" required>
+        <input inputmode="numeric" maxlength="1" pattern="[0-9]" name="code[1]" aria-label="Dígito 2" required>
+        <input inputmode="numeric" maxlength="1" pattern="[0-9]" name="code[2]" aria-label="Dígito 3" required>
+        <input inputmode="numeric" maxlength="1" pattern="[0-9]" name="code[3]" aria-label="Dígito 4" required>
+        <input inputmode="numeric" maxlength="1" pattern="[0-9]" name="code[4]" aria-label="Dígito 5" required>
+        <input inputmode="numeric" maxlength="1" pattern="[0-9]" name="code[5]" aria-label="Dígito 6" required>
+      </fieldset>
+      <button class="primary auth-submit" type="submit">Validar e continuar</button>
+    </form>
+    <p class="resend-copy">Não recebeu o código? <button class="auth-link resend-code" type="button">Reenviar código</button></p>
+    <a class="auth-back" href="/register">← Usar outro endereço de e-mail</a>
+  </section>
+</main>
+<%- include('../partials/footer') %>

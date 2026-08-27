@@ -1,0 +1,56 @@
+<%- include('../../partials/head') %>
+<div class="viewer-shell">
+  <%- include('../../partials/aside') %>
+  <div class="viewer-content">
+    <header class="viewer-top">
+      <button class="menu-btn viewer-menu" id="menuBtn" aria-label="Abrir menu">☰</button>
+      <div class="viewer-actions">
+        <a href="/auth/library/<%= library.slug %>">← Bibliotecas</a>
+        <a class="primary" href="<%= library.item.externalUrl %>" target="_blank" rel="noreferrer">Abrir fonte JSON ↗</a>
+      </div>
+    </header>
+    <main class="viewer-main">
+      <a class="viewer-back" href="/auth/library/<%= library.slug %>">← Retornar ao catálogo</a>
+      <section class="viewer-head">
+        <div class="viewer-cover library-cover cover-<%= library.category.toLowerCase() %>"><span class="viewer-type-badge" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="5" cy="12" r="1" />
+              <circle cx="12" cy="12" r="1" />
+              <circle cx="19" cy="12" r="1" />
+            </svg></span></div>
+        <div>
+          <span class="category-badge <%= library.category.toLowerCase() %>" title="Outros" aria-label="Outros">
+            <%= library.category %>
+          </span>
+          <h1><%= library.item.title %></h1>
+          <p><%= library.item.description %></p>
+        </div>
+      </section>
+      <div class="viewer-layout">
+        <section class="viewer-card">
+          <h2>Informações do item</h2>
+          <div class="field-grid">
+            <div class="field"><label>Data de lançamento</label><span><%= library.item.releaseDate %></span></div>
+            <div class="field"><label>Plataforma</label><span><%= library.item.platform %></span></div>
+            <div class="field"><label>Tags</label>
+              <div class="tags"><% library.item.tags.forEach(tag => { %> <b><%= tag %></b> <% }) %></div>
+            </div>
+            <div class="field"><label>URL externa</label><span><a href="<%= library.item.externalUrl %>"><%= library.item.externalUrl %></a></span></div>
+          </div>
+        </section>
+        <aside class="viewer-card">
+          <h2>Visualização JSON</h2>
+          <pre class="json-preview">{
+  "title": "",
+  "description": "",
+  "releaseDate": "",
+  "tags": [],
+  "platform": "",
+  "externalUrl": ""
+}</pre>
+        </aside>
+      </div>
+    </main>
+  </div>
+  <div class="mobile-overlay" id="overlay"></div>
+</div>
+<%- include('../../partials/footer') %>

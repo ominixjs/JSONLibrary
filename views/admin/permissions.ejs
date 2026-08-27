@@ -1,0 +1,146 @@
+<%- include('../partials/head') %>
+<div class="app-shell">
+  <%- include('../partials/aside') %>
+
+  <main class="main">
+    <%- include('../partials/header') %>
+
+    <section class="page active" id="permissions">
+      <a class="back-button" href="/auth/dashboard">← Voltar ao painel</a>
+      <div class="page-title">
+        <div>
+          <p class="eyebrow">ADMINISTRAÇÃO</p>
+          <h1>Permissões de usuários</h1>
+          <p class="muted">Gerencie quem tem acesso ao seu espaço e às bibliotecas.</p>
+        </div><button class="primary" data-modal="invite-user">+ Convidar usuário</button>
+      </div>
+      <div class="table-card">
+        <div class="table-tools">
+          <!-- Filtros -->
+          <div class="input-icon small">
+            ⌕ <input id="userSearch" placeholder="Buscar usuário...">
+          </div>
+
+          <select id="userRoleFilter" aria-label="Filtrar função">
+            <option value="Todos">Todas as funções</option>
+            <option value="Admin">Administrador</option>
+            <option value="User">Usuário</option>
+          </select>
+
+          <select id="userStatusFilter" aria-label="Filtrar status">
+            <option value="Todos">Todos os status</option>
+            <option value="Ativo">Ativos</option>
+            <option value="Pendente">Pendentes</option>
+            <option value="Inativo">Inativos</option>
+          </select>
+
+          <button class="ghost clear-user-filters" id="clearUserFilters" type="button">Limpar</button>
+        </div>
+
+        <div class="user-table-wrap">
+          <table class="user-table">
+            <thead>
+              <tr>
+                <th>USUÁRIO</th>
+                <th>FUNÇÃO</th>
+                <th>BIBLIOTECAS</th>
+                <th>STATUS</th>
+                <th><span class="sr-only">Ações</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% users.forEach(user => { %>
+              <tr>
+                <td>
+                  <div class="person">
+                    <span class="avatar permission-avatar">
+                      <% const arrayName = user.name.split(" ") %>
+                      <%= arrayName.length > 1 ? `${arrayName[0][0]}${arrayName[1][0]}` : arrayName[0][0] %>
+                    </span>
+                    <span>
+                      <strong><%= user.name %></strong>
+                      <small>[email&#160;protected]</small>
+                    </span>
+                  </div>
+                </td>
+                <td data-label="Função">
+                  <b class="role <%= user.role.toLowerCase() %>"><%= user.role %></b>
+                </td>
+                <td data-label="Bibliotecas">Todas as bibliotecas</td>
+                <td data-label="Status">
+                  <b class="status active-dot">Ativo</b>
+                </td>
+                <td>
+                  <div class="row-actions">
+                    <button class="edit-user" data-modal="edit-user" data-id="<%= user.id %>" data-name="<%= user.name %>" data-email="<%= user.email %>" data-role="<%= user.role %>" data-libraries="Todas as bibliotecas" data-status="Ativo" data-id="<%= user.id %>">Editar</button>
+                    <button class="delete-user" data-modal="delete-user" data-name="<%= user.name %>" data-id="<%= user.id %>">Excluir</button>
+                  </div>
+                </td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    <%- include('../partials/navPagination') %>
+  </main>
+</div>
+
+<!-- Modal de edição de dados -->
+<div class="mobile-overlay" id="overlay"></div>
+<div class="modal-layer" id="modalLayer" aria-hidden="true" hidden>
+  <!-- Modal de deleção de dados -->
+  <section class="modal" hidden data-modal-id="edit-user" role="dialog" aria-modal="true" aria-labelledby="editUserTitle">
+    <button class="modal-icon-close modal-close" aria-label="Fechar modal"><svg viewBox="0 0 24 24">
+        <path d="M6 6l12 12M18 6 6 18" />
+      </svg></button>
+    <form action="/auth/user-edit" method="post" class="modal-form">
+      <p class="eyebrow">EDITAR USUÁRIO</p>
+      <h2 id="editUserTitle" data-text="name">Usuário</h2>
+      <p class="modal-sub">Campos preenchidos pelos atributos data-* da tabela.</p>
+      <input type="hidden" name="id" data-field="id">
+      <label>Nome
+        <input name="name" data-field="name">
+      </label>
+      <label>E-mail
+        <input name="email" data-field="email">
+      </label>
+      <label>Função
+        <select name="role" data-field="role">
+          <option value="Admin">Administrador</option>
+          <option value="User">Usuário</option>
+        </select>
+      </label>
+      <label>Bibliotecas permitidas
+        <input name="libraries" data-field="libraries"></label>
+      <label>Status
+        <select name="status" data-field="status">
+          <option>Ativo</option>
+          <option>Pendente</option>
+          <option>Inativo</option>
+        </select>
+      </label>
+      <button class="primary full" type="submit">Salvar alterações</button>
+    </form>
+  </section>
+
+  <!-- Modal de deletar usuário -->
+  <section class="modal" hidden data-modal-id="delete-user" role="dialog" aria-modal="true" aria-labelledby="deleteUserTitle">
+    <button class="modal-icon-close modal-close" aria-label="Fechar modal">
+      <svg viewBox="0 0 24 24">
+        <path d="M6 6l12 12M18 6 6 18" />
+      </svg>
+    </button>
+    <form class="modal-form" data-delete-form="user" data-action-template="/auth/user-delete/{id}" method="get">
+      <p class="eyebrow danger-label">AÇÃO PERMANENTE</p>
+      <h2 id="deleteUserTitle">Excluir usuário?</h2>
+      <p class="modal-sub">O acesso de <strong data-text="name">usuário</strong> será removido permanentemente.</p>
+      <input type="hidden" name="id" data-field="id">
+      <div class="modal-actions">
+        <button class="danger solid" type="submit">Excluir usuário</button>
+      </div>
+    </form>
+  </section>
+</div>
+<%- include('../partials/footer') %>

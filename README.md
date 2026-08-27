@@ -2,16 +2,44 @@
 
 ## 📚 JSONLibrary
 
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![Express](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
 ![Sequelize](https://img.shields.io/badge/Sequelize-52B0E7?style=for-the-badge&logo=sequelize&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![License](https://img.shields.io/github/license/OMINIXJS/JSONLibrary?style=for-the-badge)
+
+## Sobre o projeto
 
 Projeto idealizado primeiramente para aprendizado em controle de dados, criptografia de dados de cliente, autenticação, codigo limpo, organização e frontend.
 
-O sistema tem como objetivo armazenar dados via URL de lista do tipo JSON. O projeto definitivamente é muito expecifico, porém muitas comunidades na internet usa essa forma de "armazenagem" por ser simples, prática e eficiente. Pra pessoas que salva videos, jogos, images ou qualquer outro com conteúdos de interesse pode lista-los e criar uma biblioteca com base nas proprias informações que quiserem. Essa é uma proposta que tive e achei muito interessante, mas sinto que ainda não alcancei o ponto ideal.
+O sistema tem como objetivo armazenar dados via URL de lista do tipo JSON. O projeto definitivamente é muito expecifico, porém algumas comunidades na internet usa essa forma de "armazenagem" por ser simples, prática e eficiente.
 
-_feito por Ominixjs_
+Para pessoas com eu que salva videos, jogos, images ou qualquer outro com conteúdos de interesse pode lista-los e criar uma biblioteca com base nas proprias informações que quiserem.
+
+Essa é uma proposta que tive e achei muito interessante, mas sinto que ainda não alcancei a lógica ideal para o sistema.
+
+## 🧩 Funcionaliadades
+
+Funcionalidades do sistema e biblioteca usada. O template foi pensado em uma interface limpa e simples com modo dark e light;
+
+- ✅ Sistema de autenticação com **JWT** e **cookie-parser**;
+- ✅ Niveís de usuários no sistema _administrador_ e _usuário_;
+- ✅ Sistema de validação de senha com **bcrypt**;
+- ❌ Sistema de validação de 2 fatores;
+- ✅ Limite de tentativas em logins, cadastros e acessos com **express-rate-limit**;
+- ✅ Middlewares de autenticação e autorização;
+- ✅ Tratamentos de erros usando middleware global;
+- ✅ Prevenção de SQL injection;
+- ✅ Adicionado cabeçalhos de segurança para rotas e requisições com **helmet**;
+- ✅ Logs para supervisão do sistema com **winston**;
+- ✅ Validação de dados de entrada com **zod**;
+- ✅ ORM usado para controlar DB com **sequelize**;
+- ✅ ID gerados com **nanoid**;
+- ✅ Modelos HTML renderizados com **ejs**;
+- ✅ Variaveis de ambiente em **env.**
+- ✅ Rotas expecificas para respostas de ações;
+- ✅ Sistema de envio de email com **resend**;
 
 ## 📖 Modo de uso:
 

@@ -1,0 +1,22 @@
+   <header class="topbar">
+     <button class="menu-btn" id="menuBtn">☰</button>
+     <div class="context-search"><span>⌕</span>
+       <input id="globalSearch" placeholder="Buscar bibliotecas e itens..."><kbd>⌘ K</kbd>
+       <ul class="navbar-search-results" id="navbarSearchResults" hidden aria-label="Resultados de bibliotecas"></ul>
+     </div>
+     <div class="top-profile"><span class="avatar">
+         <% const avatarName = name.toUpperCase().split(" ") %>
+         <%= avatarName.length > 1 ? `${avatarName[0][0]}${avatarName[0][1]}` : avatarName[0][0] %>
+       </span>
+       <div>
+         <strong>
+           <% const partsName = name.split(" ") %>
+           <%= partsName.length > 1 ? `${partsName[0]} ${partsName[1]}` : partsName[0] %>
+         </strong>
+         <small>
+           <em></em>
+           <%= role === 'Admin' ? 'Administrador' : "Usuário" %>
+         </small>
+       </div>
+     </div>
+   </header>

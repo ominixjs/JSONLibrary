@@ -1,0 +1,33 @@
+<%- include('../partials/head') %>
+<main class="auth-page">
+  <section class="auth-card"><button class="auth-theme" id="themeToggle" type="button" aria-label="Alternar tema">◐</button><a class="auth-brand" href="index.html"><img src="/assets/images/logo.svg" alt="JSONLibrary"></a>
+    <h1>Crie sua conta</h1>
+    <p class="auth-intro">Comece a organizar suas coleções JSON em poucos passos.</p>
+    <form class="auth-form" action="/register/auth" method="post">
+      <label>Nome completo
+        <input name="name" type="text" placeholder="Seu nome" required>
+      </label>
+      <label>E-mail
+        <input name="email" type="email" placeholder="voce@exemplo.com" required>
+      </label>
+      <label>Senha
+        <span class="password-field">
+          <input name="password" type="password" placeholder="Crie uma senha" required>
+          <button class="toggle-password" type="button" aria-label="Mostrar senha" aria-pressed="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z" />
+              <circle cx="12" cy="12" r="2.5" />
+            </svg>
+          </button>
+        </span>
+      </label>
+      <label class="auth-check">
+        <input name="termsOfUseAndPrivacy" type="checkbox" required>
+        Li e aceito os <a href="/terms/#">termos de uso</a> e a <a href="/terms/#">política de privacidade</a>.
+      </label>
+      <button class="primary auth-submit" type="submit">Criar conta</button>
+    </form>
+    <p class="auth-footer">Já possui uma conta? <a class="auth-link" href="/login">Entrar</a></p>
+  </section>
+</main>
+<%- include('../partials/footer') %>

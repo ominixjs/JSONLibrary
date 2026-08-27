@@ -1,0 +1,47 @@
+<aside class="sidebar" id="sidebar">
+  <a class="brand" href="/auth/dashboard" aria-label="JSONLibrary, ir ao painel">
+    <span class="brand-mark"><img src="/assets/images/logo.svg" alt=""></span>
+    <span>JSON<span>Library</span></span>
+  </a>
+  <nav class="side-nav">
+    <button class="sidebar-close" id="sidebarClose" aria-label="Fechar menu" title="Fechar menu lateral"><svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M6 6l12 12M18 6 6 18" />
+      </svg></button>
+    <a href="/auth/dashboard"><i>⌂</i> Painel</a>
+    <a href="/auth/libraries/1"><i>◇</i> Todas as bibliotecas</a>
+    <span class="nav-label">ADMINISTRAÇÂO</span>
+    <a href="/auth/settings"><i>⚙</i> Configurações</a>
+    <% if (role === 'Admin') { %>
+    <a href="/auth/permissions/1"><i>♧</i> Permissões</a>
+    <% } %>
+    <span class="nav-label nav-support">SUPORTE</span>
+    <a href="/help"><i>?</i> Ajuda</a>
+    <a href="/about"><i>i</i> Sobre</a>
+    <a href="/terms"><i>§</i> Políticas</a>
+  </nav>
+  <div class="sidebar-bottom">
+    <button class="theme-btn" id="themeToggle">
+      <span>◐</span> Alternar tema</button>
+    <a class="github-btn" href="https://github.com/ominixjs" target="_blank" rel="noreferrer" aria-label="Abrir GitHub">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.18-3.37-1.18-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.04 1.53 1.04.9 1.54 2.35 1.1 2.92.84.09-.65.35-1.1.64-1.35-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.6 9.6 0 0 1 12 6.8a9.6 9.6 0 0 1 2.5.34c1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.69-4.57 4.94.36.31.68.9.68 1.82v2.7c0 .27.18.58.69.48A10 10 0 0 0 12 2Z" />
+      </svg><span>GitHub</span></a>
+    <div class="user-mini"><span class="avatar">
+        <% const avatarName = name.toUpperCase().split(" ") %>
+        <%= avatarName.length > 1 ? `${avatarName[0][0]}${avatarName[0][1]}` : avatarName[0][0] %>
+      </span>
+      <div>
+        <strong>
+          <% const partsName = name.split(" ") %>
+          <%= partsName.length > 1 ? `${partsName[0]} ${partsName[1]}` : partsName[0] %>
+        </strong>
+        <small><%= role === 'Admin' ? 'Administrador' : "Usuário" %></small>
+      </div>
+      <a class="user-logout" href="/logout" aria-label="Sair da conta" title="Sair">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M10 5H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h5M14 8l4 4-4 4M18 12H9" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</aside>

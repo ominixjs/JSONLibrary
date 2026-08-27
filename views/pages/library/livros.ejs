@@ -1,0 +1,68 @@
+<%- include('../../partials/head') %>
+<div class="viewer-shell">
+  <%- include('../../partials/aside') %>
+
+  <div class="viewer-content">
+    <%- include('../../partials/header') %>
+
+    <main class="viewer-main">
+      <a class="viewer-back" href="/auth/library/<%= library.slug %>">← Retornar ao catálogo</a>
+
+      <section class="viewer-head">
+        <div class="viewer-cover book">
+          <span class="viewer-type-badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5Z" />
+              <path d="M4 5.5v16M8 7h8" />
+            </svg>
+          </span>
+        </div>
+        <div>
+          <span class="category-badge <%= library.category.toLowerCase() %>" title="Livros" aria-label="Livros">
+            <%= library.category %>
+          </span>
+          <h1><%= library.item.title %></h1>
+          <p><%= library.item.description %></p>
+        </div>
+      </section>
+      <div class="viewer-layout">
+        <section class="viewer-card">
+          <h2>Informações do item</h2>
+          <div class="field-grid">
+            <div class="field"><label>Autor</label><span><%= library.item.author %></span></div>
+            <div class="field"><label>Data de lançamento</label><span><%= library.item.release %></span></div>
+            <div class="field"><label>Tags</label>
+              <div class="tags">
+                <% library.item.tags.forEach(tag => { %>
+                <b><%= tag %></b>
+                <% }) %>
+              </div>
+            </div>
+            <div class="field"><label>Idioma</label><span><%= library.item.language %></span></div>
+            <div class="field"><label>Loja</label><span><%= library.item.store %></span></div>
+            <div class="field"><label>URL externa</label><span><a href="<%= library.item.externalUrl %>"><%= library.item.externalUrl %></a></span></div>
+          </div>
+        </section>
+        <aside class="viewer-card">
+          <h2>Visualização JSON</h2>
+          <pre class="json-preview">{
+  "title": "",
+  "description": "",
+  "releaseDate": "",
+  "author": "",
+  "tags": [],
+  "externalUrl": "",
+  "store": "",
+  "language": ""
+}</pre>
+        </aside>
+      </div>
+    </main>
+  </div>
+  <div class="mobile-overlay" id="overlay"></div>
+</div>
+<script src="js/app.js"></script>
+</body>
+
+</html>
+<%- include('../../partials/footer') %>

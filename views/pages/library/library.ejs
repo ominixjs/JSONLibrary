@@ -1,0 +1,115 @@
+<%- include("../../partials/head") %>
+
+<div class="app-shell">
+  <%- include("../../partials/aside") %>
+
+  <main class="main">
+    <%- include("../../partials/header") %>
+
+    <section class="page active" id="library-detail">
+      <a class="back-button" href="/auth/dashboard">← Voltar às bibliotecas</a>
+      <div class="breadcrumb">Bibliotecas <span>/</span> <%= library.category %> <span>/</span> <%= library.name %></div>
+      <div class="detail-hero">
+        <div class="cover library-cover cover-<%= library.category.toLowerCase() %>">
+        </div>
+        <div>
+          <h1><%= library.name %></h1>
+          <p><%= library.description ? library.description : 'Uma coleção atualizada com conteúdos revisados, organizados e prontos para consulta.' %></p><small>Fonte: <a href="<%= library.url %>">Clique aqui para visualizar</a> · <%= library.lastModifield %></small>
+        </div>
+        <div class="detail-actions">
+          <button class="ghost" data-modal="edit-library">Editar</button>
+          <button class="danger" data-modal="delete-library">Excluir</button>
+        </div>
+      </div>
+      <div class="stat-row">
+        <div><strong><%= library.data.length %></strong><span>Itens importados</span></div>
+        <div><strong><%= library.posted.replace('há', 'Há')  %></strong><span>Foi postado</span></div>
+        <div><strong><%= library.lastModifield.replace('há', 'Há')  %></strong><span>Última atualização</span></div>
+      </div>
+      <div class="section-head">
+        <div>
+          <h2>Itens da biblioteca</h2>
+          <p><%= library.data.length %> itens encontrados</p>
+        </div>
+      </div>
+      <div class="input-icon small item-search">⌕ <input class="itemSearch" placeholder="Buscar itens desta biblioteca..."></div>
+      <div class="item-list">
+        <% library.data.forEach(item => { %>
+        <article>
+          <div class="thumb library-cover cover-<%= library.category.toLowerCase() %>">
+            <span><%= library.category.toUpperCase().replace('S', '').replace('N', '') %></span>
+          </div>
+          <div class="item-content">
+            <h3><%= item.title %></h3>
+            <p><%= item.description %></p>
+            <%  item.tags.forEach(tag => { %>
+            <span><%= tag %></span>
+            <% }) %>
+          </div>
+          <div>
+            <small>
+              <%= new Date(item.releaseDate).toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' }) %>
+            </small>
+            <a class="item-open" href="/auth/library/<%= library.category.toLowerCase() %>/<%= library.slug %>/<%= item.title %>">Visualizar →</a></div>
+        </article>
+        <% }) %>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- Modal de editar dados da biblioteca -->
+<div class="mobile-overlay" id="overlay"></div>
+<div class="modal-layer" id="modalLayer" aria-hidden="true" hidden>
+  <section class="modal" hidden data-modal-id="edit-library" role="dialog" aria-modal="true" aria-labelledby="editLibraryTitle">
+    <button class="modal-icon-close modal-close" aria-label="Fechar modal"><svg viewBox="0 0 24 24">
+        <path d="M6 6l12 12M18 6 6 18" />
+      </svg>
+    </button>
+    <form action="/auth/edit-library" method="post" class="modal-form">
+      <p class="eyebrow">EDITAR BIBLIOTECA</p>
+      <h2 id="editLibraryTitle" data-text="name">Biblioteca</h2>
+      <input type="hidden" name="id" value="<%= library.id %>">
+      <label> Nome
+        <input name="name" value="<%= library.name %>">
+      </label>
+      <label> URL
+        <input name="url" value="<%= library.url %>">
+      </label>
+      <label> Categoria
+        <select name="type">
+          <% categories.forEach(category => { %>
+          <% if (category.id === library.categoryId) { %>
+          <option value="<%= category.id %>" selected><%= category.name %></option>
+          <% return } %>
+          <option value="<%= category.id %>"><%= category.name %></option>
+          <% }) %>
+        </select>
+      </label>
+      <label>Descrição
+        <textarea name="description"><%= library.description %></textarea>
+      </label>
+      <button type="submit" class="primary full">Salvar alterações</button>
+    </form>
+  </section>
+
+  <!-- Modal de delete de biblioteca -->
+  <section class="modal" hidden data-modal-id="delete-library" role="dialog" aria-modal="true" aria-labelledby="deleteLibraryTitle">
+    <button class="modal-icon-close modal-close" aria-label="Fechar modal"><svg viewBox="0 0 24 24">
+        <path d="M6 6l12 12M18 6 6 18" />
+      </svg>
+    </button>
+    <p class="eyebrow danger-label">AÇÃO PERMANENTE</p>
+    <h2 id="deleteLibraryTitle">Excluir biblioteca?</h2>
+    <form action="/auth/delete-library/<%= library.id %>" method="get" class="delete-form" data-delete-form="library">
+      <p class="modal-sub">A biblioteca <strong><%= library.name %></strong> será removida permanentemente.</p><input type="hidden" name="id" data-field="id">
+      <p class="delete-id">ID selecionado: <code><%= library.id %></code></p>
+      <div class="modal-actions">
+        <button class="danger solid" type="submit">Excluir biblioteca</button>
+      </div>
+
+    </form>
+  </section>
+</div>
+<%- include("../../partials/footer") %>

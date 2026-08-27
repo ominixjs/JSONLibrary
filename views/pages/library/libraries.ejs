@@ -1,0 +1,80 @@
+<%- include('../../partials/head') %>
+
+<div class="app-shell">
+  <%- include('../../partials/aside') %>
+
+  <main class="main">
+    <%- include('../../partials/header') %>
+
+    <section class="page active" id="categories">
+      <a class="back-button" href="/auth/dashboard">← Voltar ao painel</a>
+      <div class="page-title">
+        <div>
+          <p class="eyebrow">EXPLORAR</p>
+          <h1>Todas as bibliotecas</h1>
+          <p class="muted">Navegue por suas coleções organizadas por tipo.</p>
+        </div>
+      </div>
+
+      <!-- Filtro -->
+      <div class="filterbar">
+        <div class="input-icon">⌕ <input id="librarySearch" placeholder="Buscar por nome ou descrição...">
+        </div>
+
+        <select id="libraryTypeFilter" aria-label="Filtrar por tipo">
+          <option value="Todos">Todos os tipos</option>
+          <% categories.forEach(category => { %>
+          <option value="<%= category.name %>"><%= category.name %></option>
+          <% }) %>
+        </select>
+
+        <select id="librarySort" aria-label="Ordenar bibliotecas">
+          <option value="recent">Ordenar: recentes</option>
+          <option value="name">Nome: A–Z</option>
+          <option value="items">Mais itens</option>
+        </select>
+
+        <button class="ghost" id="clearLibraryFilters" type="button">Limpar filtros</button>
+      </div>
+
+      <!-- Lista de bibliotecas -->
+      <div class="library-grid all-grid">
+        <% libraries.forEach(lib => { %>
+        <a class="library-card" href="/auth/library/<%= lib.slug %>" data-type="<%= lib.category.name %>" data-search="<%= lib.name %>" data-updated="<%= lib.updatedAt %>">
+          <div class="cover library-cover cover-<%= lib.category.name.toLowerCase() %>"></div>
+          <div class="library-info">
+            <div class="library-meta">
+              <span class="category-badge <%= lib.category.name.toLowerCase() %>"><%= lib.category.name%></span>
+            </div>
+            <h3><%= lib.name %></h3>
+            <p><%= lib.description %></p>
+            <div class="library-footer">
+              <span><%= lib.libSize %> itens</span>
+              <span>Atualizada <%= lib.lastModifield %></span>
+            </div>
+          </div>
+        </a>
+        <% }) %>
+      </div>
+
+    </section>
+
+    <%- include('../../partials/navPagination') %>
+  </main>
+</div>
+<%- include('../../partials/footer') %>
+
+<div class="filterbar">
+  <div class="input-icon">⌕ <input id="librarySearch" name="library-search" type="search" placeholder="Buscar por nome ou descrição..."></div><select id="libraryTypeFilter" name="library-type" aria-label="Filtrar por tipo">
+    <option value="Todos">Todos os tipos</option>
+    <option value="Games">Games</option>
+    <option value="Livros">Livros</option>
+    <option value="Vídeos">Vídeos</option>
+    <option value="Imagens">Imagens</option>
+    <option value="Outros">Outros</option>
+  </select><select id="librarySort" name="library-sort" aria-label="Ordenar bibliotecas">
+    <option value="recent">Ordenar: recentes</option>
+    <option value="name">Nome: A–Z</option>
+    <option value="items">Mais itens</option>
+  </select><button class="ghost" id="clearLibraryFilters" type="button">Limpar filtros</button>
+</div>

@@ -1,0 +1,83 @@
+<%- include('partials/head') %>
+<div class="app-shell">
+  <%- include("partials/aside") %>
+  <main class="main">
+    <%- include("partials/header") %>
+
+    <section class="page active" id="dashboard">
+      <div class="page-title">
+        <div>
+          <p class="eyebrow">VISÃO GERAL</p>
+          <h1>Olá, <% const firstName = name.split(" ") %><%= firstName[0] %> <span>✦</span></h1>
+          <p class="muted">Aqui estão as bibliotecas atualizadas recentemente.</p>
+        </div>
+
+        <button class="primary" data-modal="add-library">+ Adicionar biblioteca</button>
+      </div>
+      <div class="stats">
+        <article><span class="metric-badge purple">CATÁLOGO</span>
+          <p>Bibliotecas</p>
+          <h2><%= data.libraries.length %></h2>
+        </article>
+        <article><span class="metric-badge blue">ITENS</span>
+          <p>Itens catalogados</p>
+          <h2><%= data.allItems  %></h2>
+        </article>
+      </div>
+      <div class="section-head">
+        <div>
+          <h2>Adicionadas recentemente</h2>
+          <p>Continue de onde parou ou explore suas coleções.</p>
+        </div><a href="/auth/libraries/1">Ver todas →</a>
+      </div>
+      <div class="library-grid">
+        <!-- Cards das bibliotecas -->
+        <% data.libraries.forEach(lib => { %>
+        <a class="library-card" href="/auth/library/<%= lib.slug %>" data-library-name="<%= lib.name %>" data-type="<%= lib.category.name %>" data-search="<%= lib.description %>">
+          <div class="cover library-cover cover-<%= lib.category.name.toLowerCase() %>"></div>
+          <div class="library-info">
+            <div class="library-meta">
+              <span class="category-badge <%= lib.category.name.toLowerCase() %>"><%= lib.category.name  %></span>
+            </div>
+            <h3><%= lib.name %></h3>
+            <p><%= lib.description %></p>
+            <div class="library-footer"><span><%= lib.libSize %> itens</span>
+              <span>Atualizada <%= lib.lastModifield %></span>
+            </div>
+          </div>
+        </a>
+        <% }) %>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- Modal para criar bibliotecas -->
+<div class="mobile-overlay" id="overlay"></div>
+<div class="modal-layer" id="modalLayer" aria-hidden="true" hidden>
+  <section class="modal" hidden data-modal-id="add-library" role="dialog" aria-modal="true" aria-labelledby="addLibraryTitle">
+    <button class="modal-icon-close modal-close" aria-label="Fechar modal"><svg viewBox="0 0 24 24">
+        <path d="M6 6l12 12M18 6 6 18" />
+      </svg></button>
+    <form action="/auth/create-library" method="post" class="modal-form">
+      <p class="eyebrow">NOVA COLEÇÃO</p>
+      <h2 id="addLibraryTitle">Adicionar biblioteca</h2>
+      <p class="modal-sub">Conecte uma fonte JSON para começar a catalogar.</p>
+      <label>URL do arquivo JSON
+        <input name="url" data-field="url" placeholder="https://exemplo.com/biblioteca.json"></label>
+      <label>Tipo da biblioteca
+        <select name="categoryId" data-field="type">
+          <option>Selecione o tipo</option>
+          <% categories.forEach(category => { %>
+          <option value="<%= category.id %>"><%= category.name %></option>
+          <% }) %>
+        </select>
+      </label>
+      <label>Nome da coleção <small>Opcional</small>
+        <input name="name" data-field="name" placeholder="Minha coleção">
+      </label>
+      <button class="primary full" type="submit">Importar biblioteca</button>
+    </form>
+  </section>
+</div>
+<%- include('partials/footer') %>

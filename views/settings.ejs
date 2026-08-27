@@ -1,0 +1,42 @@
+<%- include('partials/head') %>
+<div class="app-shell">
+  <%- include('partials/aside') %>
+
+  <main class="main">
+    <%- include('partials/header') %>
+
+    <section class="page active" id="settings">
+      <a class="back-button" href="/auth/dashboard">← Voltar ao painel</a>
+      <div class="page-title">
+        <div>
+          <p class="eyebrow">ADMINISTRAÇÃO</p>
+          <h1>Configurações</h1>
+          <p class="muted">Personalize seu espaço e organize suas fontes.</p>
+        </div>
+      </div>
+      <div class="settings-grid">
+        <!-- Formulário de criar biblioteca -->
+        <form action="/auth/create-library" method="post" class="settings-card">
+          <h2>Adicionar biblioteca</h2>
+          <p>Importe uma coleção a partir de uma URL JSON pública.</p>
+          <label>URL do arquivo JSON
+            <input placeholder="https://exemplo.com/colecao.json"></label>
+          <label>Tipo da biblioteca
+            <select>
+              <option>Selecione um tipo</option>
+              <% categories.forEach(category => { %>
+              <option value="<%= category.id %>"><%= category.name %></option>
+              <% }) %>
+            </select>
+          </label>
+          <label>Nome da coleção
+            <small>Opcional</small>
+            <input placeholder="Ex: Meus jogos favoritos"></label>
+          <button class="primary full">Importar biblioteca</button>
+        </form>
+      </div>
+    </section>
+  </main>
+</div>
+
+<%- include('partials/footer') %>

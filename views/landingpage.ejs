@@ -1,0 +1,238 @@
+<%- include("partials/head") %>
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="JSONLibrary organiza bibliotecas e coleções JSON em uma interface clara e escalável.">
+  <title>JSONLibrary — Organize seus dados, naturalmente</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/global.css">
+</head>
+
+<body class="landing-body">
+  <header class="landing-nav">
+    <a class="landing-logo" href="landing.html" aria-label="JSONLibrary, início"><img src="/assets/images/logo.svg" alt=""><strong>JSON<span>Library</span></strong></a>
+    <nav class="landing-links" aria-label="Navegação principal"><a href="#recursos">Recursos</a><a href="#como-funciona">Como funciona</a></nav>
+    <div class="landing-actions"><button class="landing-theme" id="themeToggle" type="button" aria-label="Alternar tema">◐</button><a class="landing-login" href="/login">Entrar</a><a class="primary landing-cta" href="/register">Começar grátis</a></div>
+  </header>
+
+  <main>
+    <section class="hero-section">
+      <div class="hero-copy">
+        <p class="hero-kicker"><span></span> BIBLIOTECAS JSON, SEM COMPLEXIDADE</p>
+        <h1>Todos os seus dados.<br><em>Uma biblioteca viva.</em></h1>
+        <p class="hero-description">Importe, organize e explore coleções JSON em um espaço visual feito para times e pessoas que cuidam de conteúdo.</p>
+        <div class="hero-buttons"><a class="primary hero-primary" href="/register">Criar minha biblioteca <b>→</b></a><a class="hero-secondary" href="#como-funciona">Ver como funciona <span>↓</span></a></div>
+        <div class="hero-proof">
+          <div class="mini-avatars"><i>MA</i><i>RC</i><i>LB</i></div>
+          <p>Feito para coleções pequenas<br>e grandes acervos.</p>
+        </div>
+      </div>
+      <div class="hero-visual" aria-label="Prévia da interface JSONLibrary">
+        <div class="visual-orbit orbit-one"></div>
+        <div class="visual-orbit orbit-two"></div>
+        <div class="preview-window">
+          <div class="preview-top">
+            <div class="preview-mark"><img src="/assets/images/logo.svg" alt=""></div><span></span><span></span><span></span>
+          </div>
+          <div class="preview-body">
+            <aside><small>ESPAÇO</small><b class="preview-active">Painel</b><b>Bibliotecas</b><b>Categorias</b><small>ADMINISTRAÇÃO</small><b>Configurações</b><b>Permissões</b></aside>
+            <div class="preview-content">
+              <p>VISÃO GERAL</p>
+              <h2>Olá, Marina</h2>
+              <div class="preview-metrics"><i><small>Bibliotecas</small><strong>24</strong></i><i><small>Itens</small><strong>1.284</strong></i></div>
+              <h3>Adicionadas recentemente</h3>
+              <div class="preview-cards">
+                <article><span>Games</span><b>Indie Vault</b><small>128 itens</small></article>
+                <article><span>Livros</span><b>Estante Essencial</b><small>86 itens</small></article>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="float-tag tag-one"><span>✓</span> Importação concluída</div>
+        <div class="float-tag tag-two"><i></i> 1.284 itens organizados</div>
+      </div>
+    </section>
+
+    <section class="trust-section">
+      <p>UMA FERRAMENTA PARA QUEM ORGANIZA CONHECIMENTO</p>
+      <div><span>Games</span><span>Livros</span><span>Vídeos</span><span>Imagens</span><span>Outros</span></div>
+    </section>
+
+    <section class="features-section" id="recursos">
+      <div class="section-intro">
+        <p class="hero-kicker"><span></span> TUDO EM SEU LUGAR</p>
+        <h2>Uma estrutura simples<br>para dados complexos.</h2>
+        <p>Transforme arquivos JSON dispersos em coleções fáceis de descobrir, manter e compartilhar.</p>
+      </div>
+      <div class="feature-grid">
+        <article>
+          <div class="feature-icon purple-icon">{ }</div>
+          <h3>Importação por URL</h3>
+          <p>Conecte fontes JSON públicas em poucos segundos e mantenha os dados centralizados.</p>
+        </article>
+        <article>
+          <div class="feature-icon pink-icon">⌕</div>
+          <h3>Busca inteligente</h3>
+          <p>Encontre bibliotecas e itens rapidamente por título, categoria ou detalhes do conteúdo.</p>
+        </article>
+        <article>
+          <div class="feature-icon green-icon">⌘</div>
+          <h3>Espaço pessoal</h3>
+          <p>Cada usuário acessa somente seus próprios dados e coleções.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="types-section" id="tipos">
+      <div>
+        <p class="hero-kicker"><span></span> FORMATOS PRONTOS</p>
+        <h2>Cada tipo, uma<br>experiência de leitura.</h2>
+        <p>Visualizadores específicos mostram os campos que realmente importam para cada coleção.</p><a class="hero-secondary" href="libraries.html">Explorar o catálogo <b>→</b></a>
+      </div>
+      <div class="type-list">
+        <article><span class="type-number">01</span>
+          <div class="type-symbol game-symbol">⌘</div>
+          <div>
+            <h3>Games</h3>
+            <p>Plataformas, requisitos, recursos e muito mais.</p>
+            <details class="json-model">
+              <summary>Ver modelo JSON</summary>
+              <pre>{
+  "title": "",
+  "description": "",
+  "releaseDate": "",
+  "genres": [],
+  "tags": [],
+  "features": [],
+  "externalUrl": "",
+  "store": "",
+  "platforms": [],
+  "developer": "",
+  "publisher": "",
+  "languages": [],
+  "coverUrl": "",
+  "size": "",
+  "requirements": {
+    "minimum": { "os": "", "processor": "", "memory": "", "graphics": "", "storage": "", "directX": "" },
+    "recommended": { "os": "", "processor": "", "memory": "", "graphics": "", "storage": "", "directX": "" }
+  }
+}</pre>
+            </details>
+          </div><b>→</b>
+        </article>
+        <article><span class="type-number">02</span>
+          <div class="type-symbol livros-symbol">▥</div>
+          <div>
+            <h3>Livros</h3>
+            <p>Autor, loja, idioma e referências externas.</p>
+            <details class="json-model">
+              <summary>Ver modelo JSON</summary>
+              <pre>{
+  "title": "",
+  "description": "",
+  "releaseDate": "",
+  "author": "",
+  "tags": [],
+  "externalUrl": "",
+  "store": "",
+  "language": ""
+}</pre>
+            </details>
+          </div><b>→</b>
+        </article>
+        <article><span class="type-number">03</span>
+          <div class="type-symbol video-symbol">▷</div>
+          <div>
+            <h3>Vídeos</h3>
+            <p>Duração, plataforma, autor e miniaturas.</p>
+            <details class="json-model">
+              <summary>Ver modelo JSON</summary>
+              <pre>{
+  "title": "",
+  "description": "",
+  "releaseDate": "",
+  "duration": "",
+  "tags": [],
+  "externalUrl": "",
+  "platform": "",
+  "language": "",
+  "author": "",
+  "thumbnail": ""
+}</pre>
+            </details>
+          </div><b>→</b>
+        </article>
+        <article><span class="type-number">04</span>
+          <div class="type-symbol image-symbol">▧</div>
+          <div>
+            <h3>Imagens</h3>
+            <p>Plataforma, tags e referências visuais.</p>
+            <details class="json-model">
+              <summary>Ver modelo JSON</summary>
+              <pre>{
+  "title": "",
+  "description": "",
+  "releaseDate": "",
+  "tags": [],
+  "platform": "",
+  "externalUrl": ""
+}</pre>
+            </details>
+          </div><b>→</b>
+        </article>
+        <article><span class="type-number">05</span>
+          <div class="type-symbol other-symbol">•••</div>
+          <div>
+            <h3>Outros</h3>
+            <p>Campos flexíveis para toda coleção singular.</p>
+            <details class="json-model">
+              <summary>Ver modelo JSON</summary>
+              <pre>{
+  "title": "",
+  "description": "",
+  "releaseDate": "",
+  "tags": [],
+  "platform": "",
+  "externalUrl": ""
+}</pre>
+            </details>
+          </div><b>→</b>
+        </article>
+      </div>
+    </section>
+
+    <section class="steps-section" id="como-funciona">
+      <p class="hero-kicker"><span></span> COMEÇE AGORA</p>
+      <h2>Da fonte ao catálogo<br>em três passos.</h2>
+      <div class="step-grid">
+        <article><span>01</span>
+          <h3>Conecte seu JSON</h3>
+          <p>Adicione a URL de uma fonte e escolha o tipo de conteúdo.</p>
+        </article>
+        <article><span>02</span>
+          <h3>Organize a coleção</h3>
+          <p>Use categorias, filtros e dados de contexto para estruturar o acervo.</p>
+        </article>
+        <article><span>03</span>
+          <h3>Dados privados</h3>
+          <p>Somente você tem acesso aos dados e às coleções do seu espaço.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div>
+        <p class="hero-kicker"><span></span> SUA BIBLIOTECA COMEÇA AQUI</p>
+        <h2>Organize o que<br>importa para você.</h2>
+        <p>Crie seu espaço e dê contexto aos seus dados JSON.</p><a class="primary hero-primary" href="/register">Começar gratuitamente <b>→</b></a>
+      </div><img src="/assets/images/logo.svg" alt="Símbolo JSONLibrary">
+    </section>
+  </main>
+  <footer class="landing-footer"><a class="landing-logo" href="landing.html"><img src="/assets/images/logo.svg" alt=""><strong>JSON<span>Library</span></strong></a>
+    <p>© 2026 JSONLibrary. Dados organizados, ideias acessíveis.</p>
+    <div><a href="/help">Ajuda</a><a href="/about">Sobre</a><a href="/terms">Políticas</a></div>
+  </footer>
+  <%- include('partials/footer') %>

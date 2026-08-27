@@ -1,0 +1,7 @@
+@import url('./base.css'); @import url('./dashboard.css'); @import url('./libraries.css'); @import url('./settings.css'); @import url('./permissions.css'); @import url('./feedback.css'); @import url('./viewers.css');
+@import url('./responsive.css');
+@import url('./landing.css');
+@import url('./dark-theme.css');
+@import url('./auth.css');
+
+@import url('./institutional.css');

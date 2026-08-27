@@ -1,0 +1,46 @@
+<%- include('../partials/head') %>
+<div class="institutional-page">
+  <header class="institutional-nav"><a class="institutional-logo" href="/auth/dashboard"><img src="/assets/images/logo.svg" alt=""><strong>JSON<span>Library</span></strong></a>
+    <div class="institutional-actions"><a class="auth-link" href="/login">Entrar</a><button class="institutional-theme" id="themeToggle">◐</button></div>
+  </header>
+  <main class="institutional-main">
+    <p class="institutional-kicker">CENTRAL DE AJUDA</p>
+    <h1>Comece com sua primeira coleção.</h1>
+    <p class="institutional-intro">A JSONLibrary transforma arquivos JSON em bibliotecas simples de explorar. Siga os passos para importar e organizar seu conteúdo.</p>
+    <div class="guide-grid">
+      <article class="guide-card"><span>01</span>
+        <h2>Crie seu JSON</h2>
+        <p>Estruture os dados de acordo com o tipo: Games, Livros, Vídeos, Imagens ou Outros.</p>
+      </article>
+      <article class="guide-card"><span>02</span>
+        <h2>Publique uma URL</h2>
+        <p>Hospede o arquivo em uma URL pública segura para que a biblioteca possa importá-lo.</p>
+      </article>
+      <article class="guide-card"><span>03</span>
+        <h2>Adicione à biblioteca</h2>
+        <p>Informe a URL na área de Configurações, selecione o tipo e acompanhe sua coleção.</p>
+      </article>
+    </div>
+    <div class="service-grid">
+      <article class="service-card">
+        <h2>Serviço: criar JSON</h2>
+        <p>Organize seus itens em um arquivo JSON válido. Use os modelos da landing page como referência.</p>
+        <pre>{
+  "title": "Meu item",
+  "description": "...",
+  "tags": []
+}</pre>
+      </article>
+      <article class="service-card">
+        <h2>Serviço: importar por URL</h2>
+        <p>Aponte a JSONLibrary para uma URL do arquivo JSON. A validação e sincronização podem ser conectadas ao backend.</p>
+        <pre>https://exemplo.com/
+minha-colecao.json</pre>
+      </article>
+    </div>
+  </main>
+  <footer class="institutional-footer">JSONLibrary · Ajuda para organizar seus dados.</footer>
+</div>
+</body>
+
+</html>

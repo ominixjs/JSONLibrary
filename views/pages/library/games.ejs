@@ -1,0 +1,117 @@
+<%- include('../../partials/head') %>
+<div class="viewer-shell">
+  <%- include('../../partials/aside') %>
+
+  <div class="viewer-content">
+    <%- include('../../partials/header') %>
+
+    <main class="viewer-main"><a class="viewer-back" href="/auth/library/<%= library.slug %>">← Retornar ao catálogo</a>
+      <section class="viewer-head">
+        <div class="viewer-cover game"><span class="viewer-type-badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M7 10h10a4 4 0 0 1 3.8 5.25l-.65 2a2 2 0 0 1-3.35.77L14.5 16h-5l-2.3 2.02a2 2 0 0 1-3.35-.77l-.65-2A4 4 0 0 1 7 10Z" />
+              <path d="M8 13v4M6 15h4M16.5 14.5h.01M18.5 16.5h.01" />
+            </svg>
+          </span>
+        </div>
+        <div>
+          <span class="category-badge <%= library.category.toLowerCase() %>" title="Games" aria-label="Games">
+            <%= library.category %>
+          </span>
+          <h1><%= library.item.title %></h1>
+          <p><%= library.item.description %></p>
+        </div>
+      </section>
+      <div class="viewer-layout">
+        <section class="viewer-card">
+          <h2>Informações do item</h2>
+          <div class="field-grid">
+            <div class="field"><label>Desenvolvedor</label><span><%= library.item.developer %></span></div>
+            <div class="field"><label>Publicadora</label><span><%= library.item.publisher %></span></div>
+            <div class="field"><label>Data de lançamento</label><span><%= library.item.releaseDate %></span></div>
+            <div class="field"><label>Tamanho</label><span><%= library.item.size %></span></div>
+            <div class="field"><label>Gêneros</label>
+              <div class="tags"><% library.item.genres.forEach(genre => { %> <b><%= genre %></b> <% }) %></div>
+            </div>
+            <div class="field"><label>Tags</label>
+              <div class="tags"><% library.item.tags.forEach(tag => { %> <b><%= tag %></b> <% }) %></div>
+            </div>
+            <div class="field"><label>Recursos</label>
+              <div class="tags"><% library.item.features.forEach(feature => { %> <b><%= feature %></b> <% }) %></div>
+            </div>
+            <div class="field"><label>Plataformas</label>
+              <div class="tags"><% library.item.platforms.forEach(platform => { %> <b><%= platform %></b> <% }) %></div>
+            </div>
+            <div class="field"><label>Idiomas</label>
+              <div class="tags"><% library.item.languages.forEach(language => { %> <b><%= language %></b> <% }) %></div>
+            </div>
+            <div class="field"><label>Loja</label><span><%= library.item.store %></span></div>
+            <div class="field"><label>URL externa</label><span><a href="<%= library.item.externalUrl %>"><%= library.item.externalUrl %></a></span></div>
+            <div class="requirements">
+              <label>Requisitos de sistema</label>
+              <div class="req-cols">
+                <div class="req-box">
+                  <h3>Mínimos</h3>
+                  <p>SO: <%= library.item.requirements.minimum.os %><br>Processador: <%= library.item.requirements.minimum.processor %><br>Memória: <%= library.item.requirements.minimum.memory %><br>Gráficos: <%= library.item.requirements.minimum.graphics %><br>Armazenamento: <%= library.item.requirements.minimum.storage %><br>DirectX: <%= library.item.requirements.minimum.directX %></p>
+                </div>
+                <div class="req-box">
+                  <h3>Recomendados</h3>
+                  <p>SO: <%= library.item.requirements.recommended.os %><br>Processador: <%= library.item.requirements.recommended.processor %><br>Memória: <%= library.item.requirements.recommended.memory %><br>Gráficos: <%= library.item.requirements.recommended.graphics %><br>Armazenamento: <%= library.item.requirements.recommended.storage %><br>DirectX: <%= library.item.requirements.recommended.directX %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <aside class="viewer-card">
+          <h2>Visualização JSON</h2>
+          <pre class="json-preview">{
+  "title": "", "description": "", "releaseDate": "",
+  "genres": [], "tags": [], "features": [],
+  "externalUrl": "", "store": "", "platforms": [],
+  "developer": "", "publisher": "", "languages": [],
+  "coverUrl": "", "size": "",
+  "requirements": { "minimum": {}, "recommended": {} }
+}</pre>
+        </aside>
+      </div>
+    </main>
+  </div>
+  <div class="mobile-overlay" id="overlay"></div>
+</div>
+<script src="js/app.js"></script>
+<script>
+  (function() {
+    function c() {
+      var b = a.contentDocument || (a.contentWindow && a.contentWindow.document);
+      if (b) {
+        var d = b.createElement('script');
+        d.innerHTML = "window.__CF$cv$params={r:'a2cc2c23ff2ed525',t:'MTc4NzAwNjM0MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+        b.getElementsByTagName('head')[0].appendChild(d)
+      }
+    }
+    if (document.body) {
+      var a = document.createElement('iframe');
+      a.height = 1;
+      a.width = 1;
+      a.style.position = 'absolute';
+      a.style.top = 0;
+      a.style.left = 0;
+      a.style.border = 'none';
+      a.style.visibility = 'hidden';
+      document.body.appendChild(a);
+      if ('loading' !== document.readyState) c();
+      else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c);
+      else {
+        var e = document.onreadystatechange || function() {};
+        document.onreadystatechange = function(b) {
+          e(b);
+          'loading' !== document.readyState && (document.onreadystatechange = e, c())
+        }
+      }
+    }
+  })();
+</script>
+</body>
+
+</html>
+<%- include('../../partials/footer') %>

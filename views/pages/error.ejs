@@ -1,0 +1,24 @@
+<%- include('../partials/head') %>
+<div class="app-shell">
+  <main class="main">
+    <section class="page active feedback-page error-page" id="error">
+      <div class="feedback-card error-card">
+        <div class="feedback-symbol error-symbol"><svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 8v5M12 16h.01" />
+          </svg></div>
+        <p class="feedback-status-badge error">Resposta indisponível</p>
+        <div class="error-code-display"><span>HTTP</span><strong><%= status %></strong></div>
+        <h1>Não foi possível concluir</h1>
+        <p class="muted">O servidor encontrou um problema inesperado ao processar sua solicitação.</p>
+        <div class="error-details" role="status">
+          <div><small>CÓDIGO</small><b><%= status %></b></div>
+          <div><small>MENSAGEM</small><span><%= message || "--" %></span></div>
+        </div>
+        <div class="error-actions">
+          <a class="primary" href="/auth/dashboard">Voltar ao painel</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+<%- include('../partials/footer') %>
