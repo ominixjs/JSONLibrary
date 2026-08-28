@@ -11,7 +11,7 @@ import RequireAdmin from "../middlewares/RequireAdmin.js";
 const router = express.Router();
 
 // Pagina inicial
-router.get("/landingpage", mainController.LandingPage);
+router.get("/", mainController.LandingPage);
 
 // Pagina inicial
 router.get("/auth/dashboard", mainController.Dashboard);
