@@ -4,7 +4,7 @@ import bcrypt from "bcrypt";
 //============= Repositories
 import * as userRepository from "../repositories/UserRepository.js";
 //============= Utils
-import ValidationDatainput from "../utils/ValidationDatainput.js";
+import ValidationDataInput from "../utils/ValidationDataInput.js";
 import AppError from "../utils/AppError.js";
 
 export default async function loginUser(data) {
@@ -19,7 +19,7 @@ export default async function loginUser(data) {
     }
 
     // Valida estrutura do email
-    const validEmail = ValidationDatainput.ValidateEmail(email);
+    const validEmail = ValidationDataInput.ValidateEmail(email);
     if (!validEmail.success) {
         throw new AppError(validEmail.error.issues[0].message, 422);
     }
