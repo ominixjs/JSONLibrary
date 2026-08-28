@@ -26,6 +26,7 @@ Funcionalidades do sistema e biblioteca usada. O template foi pensado em uma int
 - ✅ Sistema de autenticação com **JWT** e **cookie-parser**;
 - ✅ Niveís de usuários no sistema _administrador_ e _usuário_;
 - ✅ Sistema de validação de senha com **bcrypt**;
+- ❌ Testes de email para evitar multiplas contas de mesmo usuário;
 - ❌ Sistema de validação de 2 fatores;
 - ✅ Limite de tentativas em logins, cadastros e acessos com **express-rate-limit**;
 - ✅ Middlewares de autenticação e autorização;
@@ -39,7 +40,7 @@ Funcionalidades do sistema e biblioteca usada. O template foi pensado em uma int
 - ✅ Modelos HTML renderizados com **ejs**;
 - ✅ Variaveis de ambiente em **env.**
 - ✅ Rotas expecificas para respostas de ações;
-- ✅ Sistema de envio de email com **resend**;
+- ❌ Sistema de envio de email com **resend**;
 
 ## 📖 Modo de uso:
 

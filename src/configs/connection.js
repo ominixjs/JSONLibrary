@@ -1,11 +1,8 @@
 import { Sequelize } from "sequelize";
-import dotenv from "dotenv";
-
-dotenv.config();
 
 // Sequelize configurado para ambiente de desenvolvimento em HTTP
 const connection = new Sequelize(
-    process.env.DB_SCHAME,
+    process.env.DB_SCHEMA,
     process.env.DB_USER,
     process.env.DB_PASSWORD,
     {

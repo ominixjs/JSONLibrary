@@ -21,20 +21,8 @@ export default async function DeleteData(type, id, role) {
         if (role !== "Admin") {
             throw new AppError("Você não possui permissão", 403);
         }
-
-        // Finaliza ação
-        await repository.Delete(id);
     }
 
-    if (type === "category") {
-        //
-        // Finaliza ação
-        await repository.Delete(id);
-    }
-
-    if (type === "library") {
-        //
-        // Finaliza ação
-        await repository.Delete(id);
-    }
+    // Finaliza ação
+    await repository.Delete(id);
 }

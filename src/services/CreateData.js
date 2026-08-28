@@ -9,7 +9,6 @@ import * as categoryRepository from "../repositories/CategoryRepository.js";
 //============ Utils
 import ValidateFields from "../utils/ValidateFields.js";
 import AppError from "../utils/AppError.js";
-
 // Repositorios
 const repositories = {
     user: userRepository,
@@ -123,7 +122,6 @@ async function CheckAndValidateLibrary(repository, url, userId) {
     }
 
     return {
-        approved: true,
         name: libraryData.name,
         description: libraryData.description,
         size: libraryData.library.length,

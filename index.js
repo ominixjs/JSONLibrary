@@ -1,6 +1,5 @@
 import express from "express";
 import helmet from "helmet";
-import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -23,9 +22,6 @@ app.use(helmet());
 
 // Reforçar headers ao usando proxy
 // app.set("trust proxy", true);
-
-// Inicializando variáveis de ambiente
-dotenv.config();
 
 // Cookies para middleware
 app.use(cookieParser(process.env.COOKIE_PARSER_KEY));

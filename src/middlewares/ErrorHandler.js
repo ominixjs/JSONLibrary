@@ -11,12 +11,10 @@ export default function ErrorHandler(error, req, res, next) {
             `[${req.method}] ${req.url} - Status: ${error.statusCode} - Mensagem: ${error.message}`
         );
 
-        return res
-            .status(error.statusCode)
-            .render("pages/error", {
-                status: error.statusCode,
-                message: error.message,
-            });
+        return res.status(error.statusCode).render("pages/error", {
+            status: error.statusCode,
+            message: error.message,
+        });
     }
 
     logger.error(`[${req.method}] ${req.url} - Erro Crítico:`, error);

@@ -5,22 +5,44 @@ import AppError from "../utils/AppError.js";
 
 const resend = new Resend(process.env.RESEND_KEY);
 
-export default async function EmailService(email) {
+export default async function EmailService(name, email) {
     const { data, error } = await resend.emails.send({
-        from: process.env.MAIL_FROM,
-        to: email,
-        subject: "Cadastro feito com sucesso",
+        from: "JSONLibrary <onboarding@resend.dev>",
+        to: [email],
+        subject: "Cadastro realizado com sucesso — JSONLibrary",
+
         html: `
-            <h2>Seja bem vindo ao JSONLibrary</h2>
+    <div>
+      <img
+        src="${process.env.APP_URL}/assets/logo.png"
+        alt="JSONLibrary"
+        width="180"
+      >
 
-            <p>Fique a vontade para criar qualquer biblioteca das mas variadas possiveis, você é quem diz como vai ser!</p>
+      <h1>Cadastro realizado com sucesso! 🎉</h1>
 
-            <h1>${email}</h1>
+      <p>Olá, ${name}!</p>
 
-            <p>
-                Se você não tentou fazer login, ignore este e-mail.
-            </p>
-        `,
+      <p>
+        Sua conta na JSONLibrary foi criada com sucesso.
+      </p>
+
+      <p>
+        Agora você já pode acessar sua conta e utilizar a plataforma.
+      </p>
+
+      <a href="${process.env.APP_URL}">
+        Acessar JSONLibrary
+      </a>
+
+      <p>
+        Este é um e-mail automático da JSONLibrary.
+        Por favor, não responda a este e-mail.
+      </p>
+    </div>
+  `,
+
+        replyTo: process.env.EMAIL_REPLY_TO,
     });
 
     if (error) {

@@ -1,5 +1,3 @@
-//============== Configs
-import connection from "../configs/connection.js";
 //============== Models
 import userModel from "./UserModel.js";
 import libraryModel from "./LibraryModel.js";
@@ -12,8 +10,5 @@ libraryModel.belongsTo(userModel);
 // Associação entre categoria e biblioteca
 categoryModel.hasMany(libraryModel);
 libraryModel.belongsTo(categoryModel);
-
-// Recriar tabelas
-// await connection.sync({ force: true });
 
 export { userModel, libraryModel, categoryModel };
