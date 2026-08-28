@@ -5,7 +5,7 @@ import * as mainController from "../controllers/MainController.js";
 import * as categoryController from "../controllers/CategoryController.js";
 import * as libraryController from "../controllers/LibraryController.js";
 //=============== Middlewares
-import RequireAdmin from "../middlewares/requireAdmin.js";
+import RequireAdmin from "../middlewares/RequireAdmin.js";
 
 //=============================
 const router = express.Router();

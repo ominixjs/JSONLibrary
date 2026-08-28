@@ -16,14 +16,10 @@ export default function RequireAuth(req, res, next) {
         return res.redirect("/login");
     }
 
-    try {
-        // Decodifica e valida
-        const decoded = jwt.verify(token, process.env.JWT_KEY);
-        // Armazena os dados do token
-        req.user = decoded;
+    // Decodifica e valida
+    const decoded = jwt.verify(token, process.env.JWT_KEY);
+    // Armazena os dados do token
+    req.user = decoded;
 
-        next();
-    } catch (err) {
-        logger.error(`${err.name} : ${err.message}`);
-    }
+    next();
 }
