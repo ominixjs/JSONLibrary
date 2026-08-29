@@ -48,7 +48,7 @@ export async function CreateLibrary(req, res) {
     if (optionalName) data = { optionalName, ...data };
 
     // Função geral de criar dados no DB
-    const result = await CreateData("library", data);
+    await CreateData("library", data);
 
     logger.info({
         user: req.user.id,

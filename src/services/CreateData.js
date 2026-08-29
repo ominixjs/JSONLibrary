@@ -116,10 +116,7 @@ async function CheckAndValidateLibrary(repository, url, userId) {
     }
 
     // Valida o nome da biblioteca que esta no JSON
-    const validationResult = ValidateFields([{ name: libraryData.name }]);
-    if (!validationResult.success) {
-        throw new AppError(validationResult.error.issues[0].message, 422);
-    }
+    ValidateFields([{ name: libraryData.name }]);
 
     return {
         name: libraryData.name,
