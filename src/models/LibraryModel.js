@@ -12,7 +12,6 @@ const libraries = connection.define(
         name: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true,
         },
         slug: {
             type: DataTypes.STRING,
