@@ -7,7 +7,7 @@
 ![Express](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
 ![Sequelize](https://img.shields.io/badge/Sequelize-52B0E7?style=for-the-badge&logo=sequelize&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
-![License](https://img.shields.io/github/license/OMINIXJS/JSONLibrary?style=for-the-badge)
+[![License](https://img.shields.io/badge/LICENSE-MIT-blue?style=for-the-badge)](LICENSE)
 
 ## Sobre o projeto
 
@@ -17,11 +17,15 @@ O sistema tem como objetivo armazenar dados via URL de lista do tipo JSON. O pro
 
 Para pessoas com eu que salva videos, jogos, images ou qualquer outro com conteúdos de interesse pode lista-los e criar uma biblioteca com base nas proprias informações que quiserem.
 
-Essa é uma proposta que tive e achei muito interessante, mas sinto que ainda não alcancei a lógica ideal para o sistema.
+Essa é uma proposta e achei muito interessante, mas sinto que ainda não alcancei a lógica ideal para o sistema.
+
+Aqui esta a primeira versão do sistema, mas não definitiva, ainda precisa de melhorias e implementações.
+
+Visite aqui: *https://jsonlibrary.onrender.com/*
 
 ## 🧩 Funcionaliadades
 
-Funcionalidades do sistema e biblioteca usada. O template foi pensado em uma interface limpa e simples com modo dark e light;
+Funcionalidades do sistema e bibliotecas usadas. O template foi pensado em uma interface limpa e simples com modo dark e light;
 
 - ✅ Sistema de autenticação com **JWT** e **cookie-parser**;
 - ✅ Niveís de usuários no sistema _administrador_ e _usuário_;
@@ -41,6 +45,21 @@ Funcionalidades do sistema e biblioteca usada. O template foi pensado em uma int
 - ✅ Variaveis de ambiente em **env.**
 - ✅ Rotas expecificas para respostas de ações;
 - ❌ Sistema de envio de email com **resend**;
+
+## 🧱 Estrtutura
+
+Os arquivos foram separados para pastas relaciodas as funcionalidades individuais.
+
+- `configs` Scripts de configuração;
+- `controllers` Lógica básica de renderizar, aguardar assincronos do services e logs;
+- `middlewares` Autorizações, permições e limite de requisições em rotas expecíficas;
+- `models` Modelos de entidades do banco de dados _MYSQL_;
+- `repositories` Métodos e operadores para uma instancia;
+- `routers` Apenas endpoints. A pasta esta dividida em 2 arquivos _UserRouter_ e _MainRouter_;
+- `services` Toda lógica pesada do sistema inteiro;
+- `Utils` Scrips reutilizaveis no sistema inteiro.
+
+O Front End possui uma logica no `public/js/main.js` para animações e algumas funcionalidades de exibição. Toda estrutura visual e javascript lado do cliente foi gerada por AI. :)
 
 ## 📖 Modo de uso:
 
@@ -181,6 +200,24 @@ Evite adicionar dados sensiveis e pessoais, o sistema não foi projetado para is
 ```
 
 Mais atualizações em breve...
+
+## 🖥️ Preview
+
+Confira algumas telas do projeto:
+
+**🌝 Modo claro**
+
+![Página inicial](public/assets/images/landingpage-light.png)
+![Página inicial](public/assets/images/login-light.png)
+![Página inicial](public/assets/images/cadastro-light.png)
+![Página inicial](public/assets/images/dashboard-light.png)
+
+**🌚 Modo escuro**
+
+![Página inicial](public/assets/images/landingpage-dark.png)
+![Página inicial](public/assets/images/login-dark.png)
+![Página inicial](public/assets/images/cadastro-dark.png)
+![Página inicial](public/assets/images/dashboard-dark.png)
 
 ## ⚙ Contribuir:
 
