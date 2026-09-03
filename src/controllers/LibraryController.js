@@ -53,7 +53,7 @@ export async function CreateLibrary(req, res) {
     logger.info({
         user: req.user.id,
         name: req.user.name,
-        res: result,
+        res: "Biblioteca criada com sucesso",
     });
     res.redirect("/success");
 }
